@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "id": "demo-toy-07",
+  "timestamp": "2026-09-16T14:30:00Z",
+  "repository": "DangoSys/buckyball",
+  "branch": "main",
+  "commit": "45e1af7fcfa87dd7529fec703fe2e64e5f96f7e5",
+  "chip": "toy",
+  "backend": "p2e",
+  "config_hash": "37687e268f66b1a2e28a4fa98cadf7de7acee49fabdd0d38d664ca86e92aaa8f",
+  "clock_hz": 80000000,
+  "demo": true,
+  "models": [
+    {
+      "name": "lenet",
+      "status": "pass",
+      "workload_hash": "eb8009359725143d38fda24cf60071eb882af96370e04e264846832e9d2a6bc1",
+      "dataset_hash": "459003106a2af19838bf5c34a4bededd3ca0848fbded941507619bd621549d94",
+      "cycles": 1313199,
+      "accuracy": 0.985,
+      "accuracy_metric": "top1",
+      "error": null,
+      "trace_url": null,
+      "operators": [
+        {
+          "id": "0",
+          "name": "conv_0",
+          "category": "Conv",
+          "cycles": 407091,
+          "start_cycle": 0,
+          "level": 0
+        },
+        {
+          "id": "0-0",
+          "name": "conv_0.inner_matmul",
+          "category": "MatMul",
+          "cycles": 203545,
+          "start_cycle": 101772,
+          "level": 1
+        },
+        {
+          "id": "1",
+          "name": "conv_1",
+          "category": "Conv",
+          "cycles": 328299,
+          "start_cycle": 407091,
+          "level": 0
+        },
+        {
+          "id": "2",
+          "name": "dense_0",
+          "category": "MatMul",
+          "cycles": 249507,
+          "start_cycle": 735390,
+          "level": 0
+        },
+        {
+          "id": "3",
+          "name": "input_transfer",
+          "category": "Transfer",
+          "cycles": 131319,
+          "start_cycle": 984897,
+          "level": 0
+        },
+        {
+          "id": "4",
+          "name": "relu_0",
+          "category": "Activation",
+          "cycles": 78791,
+          "start_cycle": 1116216,
+          "level": 0
+        },
+        {
+          "id": "5",
+          "name": "maxpool_0",
+          "category": "Pool",
+          "cycles": 65659,
+          "start_cycle": 1195007,
+          "level": 0
+        },
+        {
+          "id": "6",
+          "name": "output_transfer",
+          "category": "Transfer",
+          "cycles": 52533,
+          "start_cycle": 1260666,
+          "level": 0
+        }
+      ]
+    },
+    {
+      "name": "mobilenet",
+      "status": "pass",
+      "workload_hash": "dbb8e9d7c4476a240eadf26ae92cb6f32bbcbe377ae0559361c0ac1ab0b87f1d",
+      "dataset_hash": "3e519a6c1fb025d7caa1f81b1a95432f7d92ef931f82b3451e2d4abfc006727a",
+      "cycles": 11255999,
+      "accuracy": 0.72,
+      "accuracy_metric": "top1",
+      "error": null,
+      "trace_url": null,
+      "operators": [
+        {
+          "id": "0",
+          "name": "conv_0",
+          "category": "Conv",
+          "cycles": 3489359,
+          "start_cycle": 0,
+          "level": 0
+        },
+        {
+          "id": "0-0",
+          "name": "conv_0.inner_matmul",
+          "category": "MatMul",
+          "cycles": 1744679,
+          "start_cycle": 872339,
+          "level": 1
+        },
+        {
+          "id": "1",
+          "name": "conv_1",
+          "category": "Conv",
+          "cycles": 2813999,
+          "start_cycle": 3489359,
+          "level": 0
+        },
+        {
+          "id": "2",
+          "name": "dense_0",
+          "category": "MatMul",
+          "cycles": 2138639,
+          "start_cycle": 6303358,
+          "level": 0
+        },
+        {
+          "id": "3",
+          "name": "input_transfer",
+          "category": "Transfer",
+          "cycles": 1125599,
+          "start_cycle": 8441997,
+          "level": 0
+        },
+        {
+          "id": "4",
+          "name": "relu_0",
+          "category": "Activation",
+          "cycles": 675359,
+          "start_cycle": 9567596,
+          "level": 0
+        },
+        {
+          "id": "5",
+          "name": "maxpool_0",
+          "category": "Pool",
+          "cycles": 562799,
+          "start_cycle": 10242955,
+          "level": 0
+        },
+        {
+          "id": "6",
+          "name": "output_transfer",
+          "category": "Transfer",
+          "cycles": 450245,
+          "start_cycle": 10805754,
+          "level": 0
+        }
+      ]
+    },
+    {
+      "name": "resnet",
+      "status": "pass",
+      "workload_hash": "eaf774ffc32c9477ad5a2487ad27d6669ca64f6545dce595c9a8a82bc4c074a7",
+      "dataset_hash": "b98b89a7367431c17bbc3c1087005e2456777f1cbc2203130aeeb160328ea575",
+      "cycles": 21573999,
+      "accuracy": 0.77,
+      "accuracy_metric": "top1",
+      "error": null,
+      "trace_url": null,
+      "operators": [
+        {
+          "id": "0",
+          "name": "conv_0",
+          "category": "Conv",
+          "cycles": 6687939,
+          "start_cycle": 0,
+          "level": 0
+        },
+        {
+          "id": "0-0",
+          "name": "conv_0.inner_matmul",
+          "category": "MatMul",
+          "cycles": 3343969,
+          "start_cycle": 1671984,
+          "level": 1
+        },
+        {
+          "id": "1",
+          "name": "conv_1",
+          "category": "Conv",
+          "cycles": 5393499,
+          "start_cycle": 6687939,
+          "level": 0
+        },
+        {
+          "id": "2",
+          "name": "dense_0",
+          "category": "MatMul",
+          "cycles": 4099059,
+          "start_cycle": 12081438,
+          "level": 0
+        },
+        {
+          "id": "3",
+          "name": "input_transfer",
+          "category": "Transfer",
+          "cycles": 2157399,
+          "start_cycle": 16180497,
+          "level": 0
+        },
+        {
+          "id": "4",
+          "name": "relu_0",
+          "category": "Activation",
+          "cycles": 1294439,
+          "start_cycle": 18337896,
+          "level": 0
+        },
+        {
+          "id": "5",
+          "name": "maxpool_0",
+          "category": "Pool",
+          "cycles": 1078699,
+          "start_cycle": 19632335,
+          "level": 0
+        },
+        {
+          "id": "6",
+          "name": "output_transfer",
+          "category": "Transfer",
+          "cycles": 862965,
+          "start_cycle": 20711034,
+          "level": 0
+        }
+      ]
+    },
+    {
+      "name": "yolo",
+      "status": "pass",
+      "workload_hash": "243b6b1abc0ef27d287401d222227677797b7fa183bacbd3f18a9e9007ffd65f",
+      "dataset_hash": "469ae18c255a1186a9e84660a562852a1d353b0dcb6bab1e9082b962320b7d35",
+      "cycles": 29077999,
+      "accuracy": 0.48,
+      "accuracy_metric": "map",
+      "error": null,
+      "trace_url": null,
+      "operators": [
+        {
+          "id": "0",
+          "name": "conv_0",
+          "category": "Conv",
+          "cycles": 9014179,
+          "start_cycle": 0,
+          "level": 0
+        },
+        {
+          "id": "0-0",
+          "name": "conv_0.inner_matmul",
+          "category": "MatMul",
+          "cycles": 4507089,
+          "start_cycle": 2253544,
+          "level": 1
+        },
+        {
+          "id": "1",
+          "name": "conv_1",
+          "category": "Conv",
+          "cycles": 7269499,
+          "start_cycle": 9014179,
+          "level": 0
+        },
+        {
+          "id": "2",
+          "name": "dense_0",
+          "category": "MatMul",
+          "cycles": 5524819,
+          "start_cycle": 16283678,
+          "level": 0
+        },
+        {
+          "id": "3",
+          "name": "input_transfer",
+          "category": "Transfer",
+          "cycles": 2907799,
+          "start_cycle": 21808497,
+          "level": 0
+        },
+        {
+          "id": "4",
+          "name": "relu_0",
+          "category": "Activation",
+          "cycles": 1744679,
+          "start_cycle": 24716296,
+          "level": 0
+        },
+        {
+          "id": "5",
+          "name": "maxpool_0",
+          "category": "Pool",
+          "cycles": 1453899,
+          "start_cycle": 26460975,
+          "level": 0
+        },
+        {
+          "id": "6",
+          "name": "output_transfer",
+          "category": "Transfer",
+          "cycles": 1163125,
+          "start_cycle": 27914874,
+          "level": 0
+        }
+      ]
+    }
+  ]
+}

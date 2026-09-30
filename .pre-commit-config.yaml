@@ -1,0 +1,22 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: Check frontend formatting
+        entry: npm run format:check
+        language: system
+        files: \.(tsx?|css|json|html|ya?ml)$
+        exclude: ^public/data/
+        pass_filenames: false
+      - id: typecheck
+        name: Check TypeScript types
+        entry: npm run typecheck
+        language: system
+        files: ^(src/.*\.tsx?|tsconfig\.json|vite\.config\.ts|package(-lock)?\.json)$
+        pass_filenames: false
+      - id: reports
+        name: Validate report archive
+        entry: python3 scripts/validate_reports.py
+        language: system
+        files: ^(public/data/|scripts/)
+        pass_filenames: false
