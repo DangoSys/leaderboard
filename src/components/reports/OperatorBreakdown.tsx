@@ -1,11 +1,6 @@
 import { useState } from "react";
 import type { Run, ModelResult } from "../../types/report";
-import {
-  categoryColors,
-  formatCycles,
-  topLevelOperators,
-} from "../../lib/metrics";
-import { CircleHelp, Layers3 } from "lucide-react";
+import { categoryColors, formatCycles } from "../../lib/metrics";
 
 export default function OperatorBreakdown({
   run,
@@ -14,27 +9,27 @@ export default function OperatorBreakdown({
   run: Run;
   model: ModelResult;
 }) {
-  const [allLevels, setAllLevels] = useState(false);
-  const top = topLevelOperators(model.operators);
+  const [level, setLevel] = useState(0);
+  const levels = ["buddy", "linalg", "buckyball"];
+  const selected = model.operators.filter(
+    (operator) => operator.level === level,
+  );
   const categoryTotals = Object.entries(
-    top.reduce<Record<string, number>>((result, operator) => {
+    selected.reduce<Record<string, number>>((result, operator) => {
       result[operator.category] =
         (result[operator.category] ?? 0) + operator.cycles;
       return result;
     }, {}),
   ).sort((a, b) => b[1] - a[1]);
-  const operatorSum = top.reduce((sum, operator) => sum + operator.cycles, 0);
-  const operators = (allLevels ? model.operators : top).toSorted(
-    (a, b) => b.cycles - a.cycles,
+  const operatorSum = selected.reduce(
+    (sum, operator) => sum + operator.cycles,
+    0,
   );
+  const operators = selected.toSorted((a, b) => b.cycles - a.cycles);
   return (
     <section className="panel breakdown">
       <div className="panel-heading">
-        <div>
-          <div className="eyebrow">INSIDE THE MODEL</div>
-          <h2>Where the cycles go</h2>
-        </div>
-        <Layers3 size={19} className="muted" />
+        <h2>算子耗时</h2>
       </div>
       {model.status !== "pass" ? (
         <div className="empty-inline">
@@ -46,7 +41,7 @@ export default function OperatorBreakdown({
           <div
             className="distribution"
             role="img"
-            aria-label="Share of measured top-level operator cycles"
+            aria-label={`Share of measured ${levels[level]} cycles`}
           >
             {categoryTotals.map(([category, cycles]) => (
               <div
@@ -69,24 +64,30 @@ export default function OperatorBreakdown({
             ))}
           </div>
           <div className="table-toolbar">
-            <span>{operators.length} measured operators</span>
-            <label className="checkbox">
-              <input
-                type="checkbox"
-                checked={allLevels}
-                onChange={(event) => setAllLevels(event.target.checked)}
-              />{" "}
-              Include nested traces
+            <span>{operators.length} 个操作</span>
+            <label>
+              层级{" "}
+              <select
+                value={level}
+                onChange={(event) => setLevel(Number(event.target.value))}
+              >
+                {levels.map((name, index) => (
+                  <option key={name} value={index}>
+                    {name}
+                  </option>
+                ))}
+              </select>
             </label>
           </div>
           <div className="table-scroll">
             <table>
               <thead>
                 <tr>
-                  <th>Operator</th>
+                  <th>操作</th>
                   <th>Cycles</th>
-                  <th>Time</th>
-                  <th>Share</th>
+                  <th>调用次数</th>
+                  <th>耗时</th>
+                  <th>占比</th>
                 </tr>
               </thead>
               <tbody>
@@ -99,20 +100,25 @@ export default function OperatorBreakdown({
                             background: categoryColors[operator.category],
                           }}
                         />
-                        {operator.name}
+                        <span className="op-label" title={operator.name}>
+                          {operator.name}
+                        </span>
                       </span>
                       <small>
                         {operator.id}
-                        {allLevels ? ` · level ${operator.level}` : ""}
+                        {` · ${levels[operator.level]}`}
                       </small>
                     </td>
                     <td className="numeric">{formatCycles(operator.cycles)}</td>
                     <td className="numeric">
+                      {operator.calls.toLocaleString()}
+                    </td>
+                    <td className="numeric">
                       {((operator.cycles / run.clock_hz) * 1000).toFixed(3)} ms
                     </td>
                     <td className="numeric">
-                      {!top.includes(operator)
-                        ? "nested"
+                      {operatorSum === 0
+                        ? "—"
                         : `${((operator.cycles / operatorSum) * 100).toFixed(1)}%`}
                     </td>
                   </tr>
@@ -121,9 +127,7 @@ export default function OperatorBreakdown({
             </table>
           </div>
           <p className="footnote">
-            <CircleHelp size={13} /> Shares use measured top-level operator
-            cycles, excluding nested traces. Parallel operator durations may
-            overlap; shares are not a partition of wall time.
+            占比只计算当前层级，父级与子级不累加。并行区间可能重叠。
           </p>
         </>
       )}

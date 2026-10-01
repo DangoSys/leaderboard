@@ -1,0 +1,3212 @@
+{
+  "id": "pebble-2026-10-01-05-37-cde8747f2fd2",
+  "timestamp": "2026-10-01T05:37:13.330048Z",
+  "repository": "DangoSys/buckyball",
+  "branch": "main",
+  "commit": "cde8747f2fd219c48a28ff209dee4081e884bcd6",
+  "chip": "pebble",
+  "backend": "p2e",
+  "config_hash": "88138157fcc5da295626b4bc3137e784a2fae2737ee4c44e6a4bd078e905396c",
+  "clock_hz": 5000000,
+  "schema_version": 1,
+  "models": [
+    {
+      "name": "lenet",
+      "status": "pass",
+      "workload_hash": "63fd02beaacb35563fb4e356a9c04b9b0bbd9370372ec5b2ee917bb3346546ec",
+      "dataset_hash": "c060a704b0b69d2befc4bea38e0ba28e3278c69a0217a3073d7b834b7b77201e",
+      "accuracy": 1.0,
+      "accuracy_metric": "single_image",
+      "error": null,
+      "trace_url": "data/pebble/2026-10-01-05-37/model-0-perfetto.json",
+      "cycles": 6705422,
+      "operators": [
+        {
+          "id": "0",
+          "name": "convolution",
+          "category": "Conv",
+          "cycles": 4653126,
+          "start_cycle": 0,
+          "level": 0,
+          "calls": 1
+        },
+        {
+          "id": "0-0",
+          "name": "convolution.linalg.generic.0",
+          "category": "Quantization",
+          "cycles": 152687,
+          "start_cycle": 14402,
+          "level": 1,
+          "calls": 1
+        },
+        {
+          "id": "0-0-0",
+          "name": "convolution.linalg.generic.0.buckyball.bank_mvin.0",
+          "category": "Transfer",
+          "cycles": 711,
+          "start_cycle": 43264,
+          "level": 2,
+          "calls": 4
+        },
+        {
+          "id": "0-0-1",
+          "name": "convolution.linalg.generic.0.buckyball.bank_quant_f32_to_i8.1",
+          "category": "Quantization",
+          "cycles": 421,
+          "start_cycle": 53196,
+          "level": 2,
+          "calls": 4
+        },
+        {
+          "id": "0-0-2",
+          "name": "convolution.linalg.generic.0.buckyball.bank_mvout.2",
+          "category": "Transfer",
+          "cycles": 1136,
+          "start_cycle": 58467,
+          "level": 2,
+          "calls": 4
+        },
+        {
+          "id": "0-1",
+          "name": "convolution.linalg.mega_kernel.1",
+          "category": "Conv",
+          "cycles": 4480395,
+          "start_cycle": 169810,
+          "level": 1,
+          "calls": 1
+        },
+        {
+          "id": "0-1-0",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.0",
+          "category": "Transfer",
+          "cycles": 215,
+          "start_cycle": 186257,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-1",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.1",
+          "category": "Transfer",
+          "cycles": 1079,
+          "start_cycle": 191649,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-2",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.2",
+          "category": "Transfer",
+          "cycles": 908,
+          "start_cycle": 195505,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-3",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.3",
+          "category": "Transfer",
+          "cycles": 952,
+          "start_cycle": 199255,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-4",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.4",
+          "category": "MatMul",
+          "cycles": 1022,
+          "start_cycle": 225678,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-5",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.5",
+          "category": "Transfer",
+          "cycles": 869,
+          "start_cycle": 231413,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-6",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.6",
+          "category": "Transfer",
+          "cycles": 992,
+          "start_cycle": 247848,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-7",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.7",
+          "category": "Conv",
+          "cycles": 1004,
+          "start_cycle": 252202,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-8",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.8",
+          "category": "Transfer",
+          "cycles": 892,
+          "start_cycle": 256057,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-9",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.9",
+          "category": "Pool",
+          "cycles": 976,
+          "start_cycle": 260016,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-10",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.10",
+          "category": "Pool",
+          "cycles": 811,
+          "start_cycle": 263810,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-11",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.11",
+          "category": "Pool",
+          "cycles": 791,
+          "start_cycle": 267432,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-12",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.12",
+          "category": "Pool",
+          "cycles": 784,
+          "start_cycle": 270859,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-13",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.13",
+          "category": "Pool",
+          "cycles": 875,
+          "start_cycle": 274280,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-14",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.14",
+          "category": "Pool",
+          "cycles": 883,
+          "start_cycle": 277849,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-15",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.15",
+          "category": "Pool",
+          "cycles": 750,
+          "start_cycle": 281352,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-16",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.16",
+          "category": "Pool",
+          "cycles": 980,
+          "start_cycle": 284805,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-17",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.17",
+          "category": "MatMul",
+          "cycles": 1048,
+          "start_cycle": 288251,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-18",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.18",
+          "category": "Transfer",
+          "cycles": 1061,
+          "start_cycle": 292107,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-19",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.19",
+          "category": "Quantization",
+          "cycles": 859,
+          "start_cycle": 295764,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-20",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.20",
+          "category": "Pool",
+          "cycles": 969,
+          "start_cycle": 311535,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-22",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.22",
+          "category": "Transfer",
+          "cycles": 935,
+          "start_cycle": 316884,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-23",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.23",
+          "category": "MatMul",
+          "cycles": 796,
+          "start_cycle": 320742,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-24",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.24",
+          "category": "Transfer",
+          "cycles": 1056,
+          "start_cycle": 324592,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-25",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.25",
+          "category": "Transfer",
+          "cycles": 1299,
+          "start_cycle": 340079,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-26",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.26",
+          "category": "Conv",
+          "cycles": 949,
+          "start_cycle": 344443,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-27",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.27",
+          "category": "Transfer",
+          "cycles": 842,
+          "start_cycle": 348149,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-28",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.28",
+          "category": "Pool",
+          "cycles": 840,
+          "start_cycle": 351799,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-29",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.29",
+          "category": "Pool",
+          "cycles": 822,
+          "start_cycle": 355446,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-30",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.30",
+          "category": "Pool",
+          "cycles": 949,
+          "start_cycle": 358985,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-31",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.31",
+          "category": "Pool",
+          "cycles": 975,
+          "start_cycle": 362484,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-32",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.32",
+          "category": "Pool",
+          "cycles": 845,
+          "start_cycle": 365964,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-33",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.33",
+          "category": "Pool",
+          "cycles": 1035,
+          "start_cycle": 369425,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-34",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.34",
+          "category": "Pool",
+          "cycles": 702,
+          "start_cycle": 372956,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-35",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.35",
+          "category": "Pool",
+          "cycles": 708,
+          "start_cycle": 376383,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-36",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.36",
+          "category": "MatMul",
+          "cycles": 819,
+          "start_cycle": 379807,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-37",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.37",
+          "category": "Transfer",
+          "cycles": 726,
+          "start_cycle": 383565,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-38",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.38",
+          "category": "Quantization",
+          "cycles": 805,
+          "start_cycle": 387232,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-39",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.39",
+          "category": "Pool",
+          "cycles": 806,
+          "start_cycle": 391049,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-41",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.41",
+          "category": "Transfer",
+          "cycles": 961,
+          "start_cycle": 395367,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-42",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.42",
+          "category": "MatMul",
+          "cycles": 866,
+          "start_cycle": 399001,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-43",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.43",
+          "category": "Transfer",
+          "cycles": 1018,
+          "start_cycle": 402883,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-44",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.44",
+          "category": "Transfer",
+          "cycles": 1075,
+          "start_cycle": 418054,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-45",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.45",
+          "category": "Conv",
+          "cycles": 904,
+          "start_cycle": 422161,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-46",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.46",
+          "category": "Transfer",
+          "cycles": 894,
+          "start_cycle": 425752,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-47",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.47",
+          "category": "Pool",
+          "cycles": 829,
+          "start_cycle": 429361,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-48",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.48",
+          "category": "Pool",
+          "cycles": 778,
+          "start_cycle": 432976,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-49",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.49",
+          "category": "Pool",
+          "cycles": 837,
+          "start_cycle": 436470,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-50",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.50",
+          "category": "Pool",
+          "cycles": 883,
+          "start_cycle": 439939,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-51",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.51",
+          "category": "Pool",
+          "cycles": 854,
+          "start_cycle": 443423,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-52",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.52",
+          "category": "Pool",
+          "cycles": 848,
+          "start_cycle": 446888,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-53",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.53",
+          "category": "Pool",
+          "cycles": 823,
+          "start_cycle": 450370,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-54",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.54",
+          "category": "Pool",
+          "cycles": 903,
+          "start_cycle": 468092,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-55",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.55",
+          "category": "MatMul",
+          "cycles": 776,
+          "start_cycle": 472843,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-56",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.56",
+          "category": "Transfer",
+          "cycles": 921,
+          "start_cycle": 477048,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-57",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.57",
+          "category": "Quantization",
+          "cycles": 961,
+          "start_cycle": 480896,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-58",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.58",
+          "category": "Pool",
+          "cycles": 937,
+          "start_cycle": 484675,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-60",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.60",
+          "category": "Transfer",
+          "cycles": 720,
+          "start_cycle": 488886,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-61",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.61",
+          "category": "MatMul",
+          "cycles": 716,
+          "start_cycle": 492493,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-62",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.62",
+          "category": "Transfer",
+          "cycles": 923,
+          "start_cycle": 496314,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-63",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.63",
+          "category": "Transfer",
+          "cycles": 1190,
+          "start_cycle": 511692,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-64",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.64",
+          "category": "Conv",
+          "cycles": 905,
+          "start_cycle": 516096,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-65",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.65",
+          "category": "Transfer",
+          "cycles": 924,
+          "start_cycle": 519834,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-66",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.66",
+          "category": "Pool",
+          "cycles": 930,
+          "start_cycle": 523589,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-67",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.67",
+          "category": "Pool",
+          "cycles": 744,
+          "start_cycle": 527307,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-68",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.68",
+          "category": "Pool",
+          "cycles": 758,
+          "start_cycle": 530963,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-69",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.69",
+          "category": "Pool",
+          "cycles": 730,
+          "start_cycle": 534571,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-70",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.70",
+          "category": "Pool",
+          "cycles": 806,
+          "start_cycle": 538169,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-71",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.71",
+          "category": "Pool",
+          "cycles": 876,
+          "start_cycle": 541863,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-72",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.72",
+          "category": "Pool",
+          "cycles": 833,
+          "start_cycle": 545496,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-73",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.73",
+          "category": "Pool",
+          "cycles": 956,
+          "start_cycle": 549110,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-74",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.74",
+          "category": "MatMul",
+          "cycles": 851,
+          "start_cycle": 552672,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-75",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.75",
+          "category": "Transfer",
+          "cycles": 794,
+          "start_cycle": 556573,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-76",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.76",
+          "category": "Quantization",
+          "cycles": 817,
+          "start_cycle": 560304,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-77",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.77",
+          "category": "Pool",
+          "cycles": 886,
+          "start_cycle": 564019,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-79",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.79",
+          "category": "Pool",
+          "cycles": 846,
+          "start_cycle": 568026,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-81",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvout.81",
+          "category": "Transfer",
+          "cycles": 2378,
+          "start_cycle": 572369,
+          "level": 2,
+          "calls": 9
+        },
+        {
+          "id": "0-1-82",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.82",
+          "category": "Transfer",
+          "cycles": 228,
+          "start_cycle": 3472525,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-83",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.83",
+          "category": "Transfer",
+          "cycles": 171,
+          "start_cycle": 3477688,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-84",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.84",
+          "category": "Transfer",
+          "cycles": 140,
+          "start_cycle": 3481647,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-85",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.85",
+          "category": "MatMul",
+          "cycles": 78,
+          "start_cycle": 3485292,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-86",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.86",
+          "category": "Transfer",
+          "cycles": 79,
+          "start_cycle": 3489123,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-87",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.87",
+          "category": "Transfer",
+          "cycles": 167,
+          "start_cycle": 3507644,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-88",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.88",
+          "category": "Conv",
+          "cycles": 585,
+          "start_cycle": 3512227,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-89",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.89",
+          "category": "Transfer",
+          "cycles": 678,
+          "start_cycle": 3516109,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-90",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.90",
+          "category": "Pool",
+          "cycles": 510,
+          "start_cycle": 3519883,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-91",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.91",
+          "category": "Pool",
+          "cycles": 580,
+          "start_cycle": 3523432,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-92",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.92",
+          "category": "Pool",
+          "cycles": 543,
+          "start_cycle": 3526948,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-93",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.93",
+          "category": "Pool",
+          "cycles": 558,
+          "start_cycle": 3530556,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-94",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.94",
+          "category": "Pool",
+          "cycles": 498,
+          "start_cycle": 3534129,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-95",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.95",
+          "category": "Pool",
+          "cycles": 498,
+          "start_cycle": 3537680,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-96",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.96",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 3541244,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-97",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.97",
+          "category": "Pool",
+          "cycles": 481,
+          "start_cycle": 3544775,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-98",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.98",
+          "category": "MatMul",
+          "cycles": 534,
+          "start_cycle": 3548321,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-99",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.99",
+          "category": "Transfer",
+          "cycles": 170,
+          "start_cycle": 3746967,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-100",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.100",
+          "category": "Quantization",
+          "cycles": 191,
+          "start_cycle": 3758584,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-101",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.101",
+          "category": "Pool",
+          "cycles": 156,
+          "start_cycle": 3763484,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-103",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.103",
+          "category": "Transfer",
+          "cycles": 155,
+          "start_cycle": 3767842,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-104",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.104",
+          "category": "MatMul",
+          "cycles": 139,
+          "start_cycle": 3771715,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-105",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.105",
+          "category": "Transfer",
+          "cycles": 182,
+          "start_cycle": 3775749,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-106",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.106",
+          "category": "Transfer",
+          "cycles": 147,
+          "start_cycle": 3794902,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-107",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.107",
+          "category": "Conv",
+          "cycles": 593,
+          "start_cycle": 3799435,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-108",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.108",
+          "category": "Transfer",
+          "cycles": 631,
+          "start_cycle": 3803322,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-109",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.109",
+          "category": "Pool",
+          "cycles": 611,
+          "start_cycle": 3807106,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-110",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.110",
+          "category": "Pool",
+          "cycles": 551,
+          "start_cycle": 3810744,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-111",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.111",
+          "category": "Pool",
+          "cycles": 538,
+          "start_cycle": 3814397,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-112",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.112",
+          "category": "Pool",
+          "cycles": 586,
+          "start_cycle": 3818057,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-113",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.113",
+          "category": "Pool",
+          "cycles": 553,
+          "start_cycle": 3821806,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-114",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.114",
+          "category": "Pool",
+          "cycles": 469,
+          "start_cycle": 3825537,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-115",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.115",
+          "category": "Pool",
+          "cycles": 469,
+          "start_cycle": 3829165,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-116",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.116",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 3832870,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-117",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.117",
+          "category": "MatMul",
+          "cycles": 534,
+          "start_cycle": 3836522,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-118",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.118",
+          "category": "Transfer",
+          "cycles": 137,
+          "start_cycle": 4039628,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-119",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.119",
+          "category": "Quantization",
+          "cycles": 130,
+          "start_cycle": 4043426,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-120",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.120",
+          "category": "Pool",
+          "cycles": 214,
+          "start_cycle": 4054738,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-122",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.122",
+          "category": "Transfer",
+          "cycles": 167,
+          "start_cycle": 4059972,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-123",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.123",
+          "category": "MatMul",
+          "cycles": 120,
+          "start_cycle": 4063884,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-124",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.124",
+          "category": "Transfer",
+          "cycles": 162,
+          "start_cycle": 4067942,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-125",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.125",
+          "category": "Transfer",
+          "cycles": 179,
+          "start_cycle": 4086892,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-126",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.126",
+          "category": "Conv",
+          "cycles": 557,
+          "start_cycle": 4091499,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-127",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.127",
+          "category": "Transfer",
+          "cycles": 671,
+          "start_cycle": 4095308,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-128",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.128",
+          "category": "Pool",
+          "cycles": 594,
+          "start_cycle": 4099134,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-129",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.129",
+          "category": "Pool",
+          "cycles": 565,
+          "start_cycle": 4102795,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-130",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.130",
+          "category": "Pool",
+          "cycles": 558,
+          "start_cycle": 4106397,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-131",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.131",
+          "category": "Pool",
+          "cycles": 559,
+          "start_cycle": 4110035,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-132",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.132",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 4113704,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-133",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.133",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 4117347,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-134",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.134",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 4121023,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-135",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.135",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 4124719,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-136",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.136",
+          "category": "MatMul",
+          "cycles": 544,
+          "start_cycle": 4128439,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-137",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.137",
+          "category": "Transfer",
+          "cycles": 172,
+          "start_cycle": 4332582,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-138",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.138",
+          "category": "Quantization",
+          "cycles": 124,
+          "start_cycle": 4336376,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-139",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.139",
+          "category": "Pool",
+          "cycles": 167,
+          "start_cycle": 4348016,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-141",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.141",
+          "category": "Transfer",
+          "cycles": 150,
+          "start_cycle": 4353483,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-142",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul_bias.142",
+          "category": "MatMul",
+          "cycles": 126,
+          "start_cycle": 4357374,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-143",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.143",
+          "category": "Transfer",
+          "cycles": 144,
+          "start_cycle": 4361380,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-144",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.144",
+          "category": "Transfer",
+          "cycles": 211,
+          "start_cycle": 4380239,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-145",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_im2col.145",
+          "category": "Conv",
+          "cycles": 629,
+          "start_cycle": 4384785,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-146",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.146",
+          "category": "Transfer",
+          "cycles": 644,
+          "start_cycle": 4388573,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-147",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.147",
+          "category": "Pool",
+          "cycles": 607,
+          "start_cycle": 4392381,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-148",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.148",
+          "category": "Pool",
+          "cycles": 530,
+          "start_cycle": 4396166,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-149",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.149",
+          "category": "Pool",
+          "cycles": 611,
+          "start_cycle": 4399801,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-150",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.150",
+          "category": "Pool",
+          "cycles": 512,
+          "start_cycle": 4403532,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-151",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.151",
+          "category": "Pool",
+          "cycles": 500,
+          "start_cycle": 4407163,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-152",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.152",
+          "category": "Pool",
+          "cycles": 456,
+          "start_cycle": 4410922,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-153",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.153",
+          "category": "Pool",
+          "cycles": 494,
+          "start_cycle": 4414529,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-154",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.154",
+          "category": "Pool",
+          "cycles": 481,
+          "start_cycle": 4418202,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-155",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_smatmul.155",
+          "category": "MatMul",
+          "cycles": 548,
+          "start_cycle": 4421913,
+          "level": 2,
+          "calls": 6
+        },
+        {
+          "id": "0-1-156",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvin.156",
+          "category": "Transfer",
+          "cycles": 137,
+          "start_cycle": 4625017,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-157",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_quant_i32_to_i8.157",
+          "category": "Quantization",
+          "cycles": 124,
+          "start_cycle": 4628839,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-158",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.158",
+          "category": "Pool",
+          "cycles": 125,
+          "start_cycle": 4632708,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-160",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_maxpool.160",
+          "category": "Pool",
+          "cycles": 131,
+          "start_cycle": 4636920,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "0-1-162",
+          "name": "convolution.linalg.mega_kernel.1.buckyball.bank_mvout.162",
+          "category": "Transfer",
+          "cycles": 339,
+          "start_cycle": 4641422,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "4",
+          "name": "view",
+          "category": "Other",
+          "cycles": 88,
+          "start_cycle": 4654971,
+          "level": 0,
+          "calls": 1
+        },
+        {
+          "id": "6",
+          "name": "addmm",
+          "category": "MatMul",
+          "cycles": 2048640,
+          "start_cycle": 4656782,
+          "level": 0,
+          "calls": 1
+        },
+        {
+          "id": "6-0",
+          "name": "addmm.linalg.mega_kernel.0",
+          "category": "MatMul",
+          "cycles": 2044675,
+          "start_cycle": 4656843,
+          "level": 1,
+          "calls": 1
+        },
+        {
+          "id": "6-0-0",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.0",
+          "category": "Transfer",
+          "cycles": 191,
+          "start_cycle": 4664561,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-1",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.1",
+          "category": "MatMul",
+          "cycles": 78,
+          "start_cycle": 4668932,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-2",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.2",
+          "category": "Transfer",
+          "cycles": 123,
+          "start_cycle": 4672799,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-3",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.3",
+          "category": "Transfer",
+          "cycles": 81,
+          "start_cycle": 4676734,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-4",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.4",
+          "category": "Transfer",
+          "cycles": 221,
+          "start_cycle": 4702397,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-5",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.5",
+          "category": "MatMul",
+          "cycles": 155,
+          "start_cycle": 4706658,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-6",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.6",
+          "category": "Transfer",
+          "cycles": 117,
+          "start_cycle": 4710462,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-7",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.7",
+          "category": "Transfer",
+          "cycles": 185,
+          "start_cycle": 4735659,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-8",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.8",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 4739905,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-9",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.9",
+          "category": "Transfer",
+          "cycles": 124,
+          "start_cycle": 4743515,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-10",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.10",
+          "category": "Transfer",
+          "cycles": 233,
+          "start_cycle": 4769412,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-11",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.11",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 4774008,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-12",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.12",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 4777959,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-13",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.13",
+          "category": "Transfer",
+          "cycles": 275,
+          "start_cycle": 4805188,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-14",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.14",
+          "category": "MatMul",
+          "cycles": 155,
+          "start_cycle": 4809856,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-15",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.15",
+          "category": "Quantization",
+          "cycles": 142,
+          "start_cycle": 4813760,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-16",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.16",
+          "category": "Transfer",
+          "cycles": 172,
+          "start_cycle": 4820024,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-17",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.17",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 4824072,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-18",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.18",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 4827835,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-19",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.19",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 4831666,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-20",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.20",
+          "category": "Transfer",
+          "cycles": 189,
+          "start_cycle": 4858601,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-21",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.21",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 4862863,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-22",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.22",
+          "category": "Transfer",
+          "cycles": 120,
+          "start_cycle": 4866717,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-23",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.23",
+          "category": "Transfer",
+          "cycles": 198,
+          "start_cycle": 4893106,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-24",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.24",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 4897455,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-25",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.25",
+          "category": "Transfer",
+          "cycles": 161,
+          "start_cycle": 4901233,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-26",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.26",
+          "category": "Transfer",
+          "cycles": 172,
+          "start_cycle": 4927473,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-27",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.27",
+          "category": "MatMul",
+          "cycles": 141,
+          "start_cycle": 4931883,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-28",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.28",
+          "category": "Transfer",
+          "cycles": 214,
+          "start_cycle": 5163222,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-29",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.29",
+          "category": "Transfer",
+          "cycles": 200,
+          "start_cycle": 5192547,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-30",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.30",
+          "category": "MatMul",
+          "cycles": 165,
+          "start_cycle": 5197012,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-31",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.31",
+          "category": "Quantization",
+          "cycles": 94,
+          "start_cycle": 5200934,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-32",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.32",
+          "category": "Transfer",
+          "cycles": 196,
+          "start_cycle": 5207656,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-33",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.33",
+          "category": "MatMul",
+          "cycles": 126,
+          "start_cycle": 5211637,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-34",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.34",
+          "category": "Transfer",
+          "cycles": 104,
+          "start_cycle": 5215363,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-35",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.35",
+          "category": "Transfer",
+          "cycles": 127,
+          "start_cycle": 5219105,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-36",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.36",
+          "category": "Transfer",
+          "cycles": 167,
+          "start_cycle": 5246196,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-37",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.37",
+          "category": "MatMul",
+          "cycles": 154,
+          "start_cycle": 5250725,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-38",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.38",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 5254636,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-39",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.39",
+          "category": "Transfer",
+          "cycles": 232,
+          "start_cycle": 5281236,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-40",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.40",
+          "category": "MatMul",
+          "cycles": 136,
+          "start_cycle": 5285756,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-41",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.41",
+          "category": "Transfer",
+          "cycles": 123,
+          "start_cycle": 5289741,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-42",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.42",
+          "category": "Transfer",
+          "cycles": 231,
+          "start_cycle": 5316391,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-43",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.43",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 5320969,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-44",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.44",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 5324694,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-45",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.45",
+          "category": "Transfer",
+          "cycles": 184,
+          "start_cycle": 5350672,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-46",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.46",
+          "category": "MatMul",
+          "cycles": 171,
+          "start_cycle": 5355045,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-47",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.47",
+          "category": "Quantization",
+          "cycles": 142,
+          "start_cycle": 5358769,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-48",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.48",
+          "category": "Transfer",
+          "cycles": 150,
+          "start_cycle": 5365026,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-49",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.49",
+          "category": "MatMul",
+          "cycles": 120,
+          "start_cycle": 5368893,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-50",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.50",
+          "category": "Transfer",
+          "cycles": 188,
+          "start_cycle": 5388711,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-51",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.51",
+          "category": "Transfer",
+          "cycles": 121,
+          "start_cycle": 5392989,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-52",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.52",
+          "category": "Transfer",
+          "cycles": 170,
+          "start_cycle": 5420484,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-53",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.53",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 5424995,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-54",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.54",
+          "category": "Transfer",
+          "cycles": 172,
+          "start_cycle": 5428799,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-55",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.55",
+          "category": "Transfer",
+          "cycles": 180,
+          "start_cycle": 5455208,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-56",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.56",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 5459701,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-57",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.57",
+          "category": "Transfer",
+          "cycles": 95,
+          "start_cycle": 5463679,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-58",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.58",
+          "category": "Transfer",
+          "cycles": 226,
+          "start_cycle": 5489910,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-59",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.59",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 5494195,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-60",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.60",
+          "category": "Transfer",
+          "cycles": 135,
+          "start_cycle": 5497980,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-61",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.61",
+          "category": "Transfer",
+          "cycles": 183,
+          "start_cycle": 5524135,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-62",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.62",
+          "category": "MatMul",
+          "cycles": 137,
+          "start_cycle": 5528327,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-63",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.63",
+          "category": "Quantization",
+          "cycles": 123,
+          "start_cycle": 5532093,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-64",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.64",
+          "category": "Transfer",
+          "cycles": 171,
+          "start_cycle": 5538237,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-65",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.65",
+          "category": "MatMul",
+          "cycles": 78,
+          "start_cycle": 5542099,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-66",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.66",
+          "category": "Transfer",
+          "cycles": 144,
+          "start_cycle": 5545797,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-67",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.67",
+          "category": "Transfer",
+          "cycles": 227,
+          "start_cycle": 5562659,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-68",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.68",
+          "category": "Transfer",
+          "cycles": 205,
+          "start_cycle": 5591417,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-69",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.69",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 5595848,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-70",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.70",
+          "category": "Transfer",
+          "cycles": 168,
+          "start_cycle": 5599698,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-71",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.71",
+          "category": "Transfer",
+          "cycles": 180,
+          "start_cycle": 5626048,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-72",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.72",
+          "category": "MatMul",
+          "cycles": 155,
+          "start_cycle": 5630545,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-73",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.73",
+          "category": "Transfer",
+          "cycles": 167,
+          "start_cycle": 5634427,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-74",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.74",
+          "category": "Transfer",
+          "cycles": 166,
+          "start_cycle": 5660590,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-75",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.75",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 5665037,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-76",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.76",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 5668892,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-77",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.77",
+          "category": "Transfer",
+          "cycles": 159,
+          "start_cycle": 5694843,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-78",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.78",
+          "category": "MatMul",
+          "cycles": 165,
+          "start_cycle": 5699136,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-79",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.79",
+          "category": "Quantization",
+          "cycles": 143,
+          "start_cycle": 5702939,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-80",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.80",
+          "category": "Transfer",
+          "cycles": 157,
+          "start_cycle": 5709239,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-81",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.81",
+          "category": "MatMul",
+          "cycles": 126,
+          "start_cycle": 5713249,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-82",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.82",
+          "category": "Transfer",
+          "cycles": 144,
+          "start_cycle": 5717090,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-83",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.83",
+          "category": "Transfer",
+          "cycles": 146,
+          "start_cycle": 5720967,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-84",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.84",
+          "category": "Transfer",
+          "cycles": 186,
+          "start_cycle": 5747923,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-85",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.85",
+          "category": "MatMul",
+          "cycles": 144,
+          "start_cycle": 5752472,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-86",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.86",
+          "category": "Transfer",
+          "cycles": 200,
+          "start_cycle": 5756367,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-87",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.87",
+          "category": "Transfer",
+          "cycles": 185,
+          "start_cycle": 5782681,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-88",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.88",
+          "category": "MatMul",
+          "cycles": 82,
+          "start_cycle": 5786905,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-89",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.89",
+          "category": "Transfer",
+          "cycles": 81,
+          "start_cycle": 5790660,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-90",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.90",
+          "category": "Transfer",
+          "cycles": 196,
+          "start_cycle": 5816755,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-91",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.91",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 5821036,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-92",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.92",
+          "category": "Transfer",
+          "cycles": 155,
+          "start_cycle": 5824776,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-93",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.93",
+          "category": "Transfer",
+          "cycles": 205,
+          "start_cycle": 5850976,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-94",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.94",
+          "category": "MatMul",
+          "cycles": 7738,
+          "start_cycle": 5855382,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-95",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.95",
+          "category": "Quantization",
+          "cycles": 143,
+          "start_cycle": 5867782,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-96",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.96",
+          "category": "Transfer",
+          "cycles": 182,
+          "start_cycle": 5874348,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-97",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.97",
+          "category": "MatMul",
+          "cycles": 145,
+          "start_cycle": 5878613,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-98",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.98",
+          "category": "Transfer",
+          "cycles": 174,
+          "start_cycle": 5882442,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-99",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.99",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 5886375,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-100",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.100",
+          "category": "Transfer",
+          "cycles": 193,
+          "start_cycle": 5913637,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-101",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.101",
+          "category": "MatMul",
+          "cycles": 82,
+          "start_cycle": 5918339,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-102",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.102",
+          "category": "Transfer",
+          "cycles": 111,
+          "start_cycle": 5922327,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-103",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.103",
+          "category": "Transfer",
+          "cycles": 157,
+          "start_cycle": 5949084,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-104",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.104",
+          "category": "MatMul",
+          "cycles": 149,
+          "start_cycle": 5953688,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-105",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.105",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 5957700,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-106",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.106",
+          "category": "Transfer",
+          "cycles": 182,
+          "start_cycle": 5983864,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-107",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.107",
+          "category": "MatMul",
+          "cycles": 137,
+          "start_cycle": 5988344,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-108",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.108",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 5992355,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-109",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.109",
+          "category": "Transfer",
+          "cycles": 184,
+          "start_cycle": 6018610,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-110",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.110",
+          "category": "MatMul",
+          "cycles": 153,
+          "start_cycle": 6023222,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-111",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.111",
+          "category": "Quantization",
+          "cycles": 82,
+          "start_cycle": 6027288,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-112",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.112",
+          "category": "Transfer",
+          "cycles": 157,
+          "start_cycle": 6033405,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-113",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.113",
+          "category": "MatMul",
+          "cycles": 78,
+          "start_cycle": 6037457,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-114",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.114",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 6041277,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-115",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.115",
+          "category": "Transfer",
+          "cycles": 81,
+          "start_cycle": 6045145,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-116",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.116",
+          "category": "Transfer",
+          "cycles": 152,
+          "start_cycle": 6064917,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-117",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.117",
+          "category": "MatMul",
+          "cycles": 130,
+          "start_cycle": 6069300,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-118",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.118",
+          "category": "Transfer",
+          "cycles": 150,
+          "start_cycle": 6073310,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-119",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.119",
+          "category": "Transfer",
+          "cycles": 184,
+          "start_cycle": 6092605,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-120",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.120",
+          "category": "MatMul",
+          "cycles": 137,
+          "start_cycle": 6096989,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-121",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.121",
+          "category": "Transfer",
+          "cycles": 123,
+          "start_cycle": 6100865,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-122",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.122",
+          "category": "Transfer",
+          "cycles": 207,
+          "start_cycle": 6119792,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-123",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.123",
+          "category": "MatMul",
+          "cycles": 137,
+          "start_cycle": 6124370,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-124",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.124",
+          "category": "Transfer",
+          "cycles": 129,
+          "start_cycle": 6128240,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-125",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.125",
+          "category": "Transfer",
+          "cycles": 181,
+          "start_cycle": 6147187,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-126",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.126",
+          "category": "MatMul",
+          "cycles": 151,
+          "start_cycle": 6151842,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-127",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.127",
+          "category": "Quantization",
+          "cycles": 130,
+          "start_cycle": 6155821,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-128",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.128",
+          "category": "Transfer",
+          "cycles": 156,
+          "start_cycle": 6162376,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-129",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.129",
+          "category": "MatMul",
+          "cycles": 120,
+          "start_cycle": 6166493,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-130",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.130",
+          "category": "Transfer",
+          "cycles": 125,
+          "start_cycle": 6170376,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-131",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.131",
+          "category": "Transfer",
+          "cycles": 239,
+          "start_cycle": 6197565,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-132",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.132",
+          "category": "MatMul",
+          "cycles": 129,
+          "start_cycle": 6202074,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-133",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.133",
+          "category": "Transfer",
+          "cycles": 201,
+          "start_cycle": 6226303,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-134",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.134",
+          "category": "MatMul",
+          "cycles": 159,
+          "start_cycle": 6230860,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-135",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.135",
+          "category": "Quantization",
+          "cycles": 137,
+          "start_cycle": 6234684,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-136",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.136",
+          "category": "Transfer",
+          "cycles": 149,
+          "start_cycle": 6240952,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-137",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.137",
+          "category": "MatMul",
+          "cycles": 120,
+          "start_cycle": 6244832,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-138",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.138",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 6248625,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-139",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.139",
+          "category": "Transfer",
+          "cycles": 212,
+          "start_cycle": 6275620,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-140",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.140",
+          "category": "MatMul",
+          "cycles": 148,
+          "start_cycle": 6288179,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-141",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.141",
+          "category": "Transfer",
+          "cycles": 295,
+          "start_cycle": 6314072,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-142",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.142",
+          "category": "MatMul",
+          "cycles": 165,
+          "start_cycle": 6318712,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-143",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.143",
+          "category": "Quantization",
+          "cycles": 134,
+          "start_cycle": 6322615,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-144",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.144",
+          "category": "Transfer",
+          "cycles": 188,
+          "start_cycle": 6328882,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-145",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.145",
+          "category": "MatMul",
+          "cycles": 126,
+          "start_cycle": 6332966,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-146",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.146",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 6336794,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-147",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.147",
+          "category": "Transfer",
+          "cycles": 177,
+          "start_cycle": 6364029,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-148",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.148",
+          "category": "MatMul",
+          "cycles": 148,
+          "start_cycle": 6368540,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-149",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.149",
+          "category": "Transfer",
+          "cycles": 211,
+          "start_cycle": 6392975,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-150",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.150",
+          "category": "MatMul",
+          "cycles": 171,
+          "start_cycle": 6397583,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-151",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.151",
+          "category": "Quantization",
+          "cycles": 130,
+          "start_cycle": 6401450,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-152",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.152",
+          "category": "Transfer",
+          "cycles": 166,
+          "start_cycle": 6407726,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-153",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.153",
+          "category": "MatMul",
+          "cycles": 146,
+          "start_cycle": 6411730,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-154",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.154",
+          "category": "Transfer",
+          "cycles": 151,
+          "start_cycle": 6415575,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-155",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.155",
+          "category": "Transfer",
+          "cycles": 162,
+          "start_cycle": 6442696,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-156",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.156",
+          "category": "MatMul",
+          "cycles": 135,
+          "start_cycle": 6446986,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-157",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.157",
+          "category": "Transfer",
+          "cycles": 191,
+          "start_cycle": 6470991,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-158",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.158",
+          "category": "MatMul",
+          "cycles": 137,
+          "start_cycle": 6475538,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-159",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.159",
+          "category": "Quantization",
+          "cycles": 145,
+          "start_cycle": 6479436,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-160",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.160",
+          "category": "Transfer",
+          "cycles": 166,
+          "start_cycle": 6485854,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-161",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.161",
+          "category": "MatMul",
+          "cycles": 126,
+          "start_cycle": 6489915,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-162",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.162",
+          "category": "Transfer",
+          "cycles": 143,
+          "start_cycle": 6493778,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-163",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.163",
+          "category": "Transfer",
+          "cycles": 189,
+          "start_cycle": 6520892,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-164",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.164",
+          "category": "MatMul",
+          "cycles": 129,
+          "start_cycle": 6525327,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-165",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.165",
+          "category": "Transfer",
+          "cycles": 205,
+          "start_cycle": 6549450,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-166",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.166",
+          "category": "MatMul",
+          "cycles": 149,
+          "start_cycle": 6554118,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-167",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.167",
+          "category": "Quantization",
+          "cycles": 88,
+          "start_cycle": 6558062,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-168",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.168",
+          "category": "Transfer",
+          "cycles": 153,
+          "start_cycle": 6564260,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-169",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.169",
+          "category": "MatMul",
+          "cycles": 126,
+          "start_cycle": 6568263,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-170",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.170",
+          "category": "Transfer",
+          "cycles": 130,
+          "start_cycle": 6572074,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-171",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.171",
+          "category": "Transfer",
+          "cycles": 216,
+          "start_cycle": 6588758,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-172",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.172",
+          "category": "MatMul",
+          "cycles": 135,
+          "start_cycle": 6593076,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-173",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.173",
+          "category": "Transfer",
+          "cycles": 216,
+          "start_cycle": 6608302,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-174",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.174",
+          "category": "MatMul",
+          "cycles": 143,
+          "start_cycle": 6612794,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-175",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_quant_i32_to_i8.175",
+          "category": "Quantization",
+          "cycles": 130,
+          "start_cycle": 6616632,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-176",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.176",
+          "category": "Transfer",
+          "cycles": 164,
+          "start_cycle": 6622986,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-177",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul_bias.177",
+          "category": "MatMul",
+          "cycles": 76,
+          "start_cycle": 6627163,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-178",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.178",
+          "category": "Transfer",
+          "cycles": 131,
+          "start_cycle": 6630864,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-179",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.179",
+          "category": "Transfer",
+          "cycles": 153,
+          "start_cycle": 6651274,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-180",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.180",
+          "category": "MatMul",
+          "cycles": 124,
+          "start_cycle": 6655475,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-181",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvin.181",
+          "category": "Transfer",
+          "cycles": 147,
+          "start_cycle": 6666052,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-182",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_smatmul.182",
+          "category": "MatMul",
+          "cycles": 95,
+          "start_cycle": 6670237,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-183",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_int32_to_fp32.183",
+          "category": "Quantization",
+          "cycles": 121,
+          "start_cycle": 6674000,
+          "level": 2,
+          "calls": 1
+        },
+        {
+          "id": "6-0-184",
+          "name": "addmm.linalg.mega_kernel.0.buckyball.bank_mvout.184",
+          "category": "Transfer",
+          "cycles": 325,
+          "start_cycle": 6678273,
+          "level": 2,
+          "calls": 1
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "source_dirty": true,
+    "bitstream_sha256": "c423c872260eff806aae9b24b7b88af76099e07e2cad4a185c746548495549b5",
+    "executable_sha256": "472c9e92a46582a4633edb07eef04f19860d0e752905e2eb6dcd0126afd9d3e6",
+    "workflow_url": null,
+    "trace_scopes": {
+      "compiled": 357,
+      "executed": 347,
+      "unexecuted": [
+        [
+          0,
+          1,
+          21
+        ],
+        [
+          0,
+          1,
+          40
+        ],
+        [
+          0,
+          1,
+          59
+        ],
+        [
+          0,
+          1,
+          78
+        ],
+        [
+          0,
+          1,
+          80
+        ],
+        [
+          0,
+          1,
+          102
+        ],
+        [
+          0,
+          1,
+          121
+        ],
+        [
+          0,
+          1,
+          140
+        ],
+        [
+          0,
+          1,
+          159
+        ],
+        [
+          0,
+          1,
+          161
+        ]
+      ]
+    }
+  }
+}

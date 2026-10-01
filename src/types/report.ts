@@ -3,6 +3,7 @@ export type Operator = {
   name: string;
   category: string;
   cycles: number;
+  calls: number;
   start_cycle: number;
   level: number;
 };
@@ -31,7 +32,17 @@ export type Run = {
   backend: string;
   config_hash: string;
   clock_hz: number;
-  demo: boolean;
+  provenance?: {
+    source_dirty: boolean;
+    bitstream_sha256: string;
+    executable_sha256: string;
+    workflow_url: string | null;
+    trace_scopes: {
+      compiled: number;
+      executed: number;
+      unexecuted: number[][];
+    };
+  };
   models: ModelResult[];
 };
 

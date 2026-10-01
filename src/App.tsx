@@ -1,82 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppShell from "./components/layout/AppShell";
-import Dashboard from "./features/dashboard/Dashboard";
+import RunAnalysis from "./features/reports/RunAnalysis";
+import Trends from "./features/trends/Trends";
 import { useReports } from "./hooks/useReports";
-import { BarChart3, ChevronRight, RefreshCw } from "lucide-react";
 
 export default function App() {
-  const [demo, setDemo] = useState(
-    new URLSearchParams(location.search).get("demo") === "1",
+  const [page, setPage] = useState(
+    location.hash === "#trends" ? "trends" : "analysis",
   );
-  const { runs, loading, error } = useReports(demo);
-  const changeMode = (value: boolean) => {
-    setDemo(value);
-    const url = new URL(location.href);
-    if (value) url.searchParams.set("demo", "1");
-    else url.searchParams.delete("demo");
-    history.replaceState(null, "", url);
-  };
+  const [selectedId, setSelectedId] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
+  const { runs, loading, error } = useReports();
+  useEffect(() => {
+    const navigate = () =>
+      setPage(location.hash === "#trends" ? "trends" : "analysis");
+    window.addEventListener("hashchange", navigate);
+    return () => window.removeEventListener("hashchange", navigate);
+  }, []);
   return (
-    <AppShell demo={demo}>
-      <div className="page-heading">
-        <div>
-          <div className="eyebrow">BUCKYBALL LEADERBOARD</div>
-          <h1>Performance, in perspective.</h1>
-          <p>Track every model. Understand every cycle.</p>
-        </div>
-        <div className="segmented data-mode" aria-label="Report dataset">
-          <button
-            className={!demo ? "active" : ""}
-            onClick={() => changeMode(false)}
-          >
-            Recorded runs
-          </button>
-          <button
-            className={demo ? "active" : ""}
-            onClick={() => changeMode(true)}
-          >
-            Explore demo
-          </button>
-        </div>
-      </div>
-      {demo && (
-        <div className="demo-banner">
-          <span className="demo-dot" />
-          <strong>Demo workspace</strong>
-          <span>
-            All numbers are illustrative. No hardware measurements are shown.
-          </span>
-        </div>
-      )}
+    <AppShell page={page}>
       {loading ? (
-        <section className="panel empty" role="status">
-          <RefreshCw className="spin" size={28} />
-          <h2>Loading reports</h2>
-        </section>
+        <p className="empty" role="status">
+          正在加载报告…
+        </p>
       ) : error ? (
-        <section className="panel empty" role="alert">
-          <h2>Reports could not be loaded</h2>
+        <div className="empty" role="alert">
+          <h1>报告加载失败</h1>
           <p>{error}</p>
-        </section>
-      ) : runs.length ? (
-        <Dashboard key={String(demo)} runs={runs} demo={demo} />
+        </div>
+      ) : runs.length === 0 ? (
+        <div className="empty">
+          <h1>暂无报告</h1>
+          <p>运行结果上传后会显示在这里。</p>
+        </div>
+      ) : page === "trends" ? (
+        <Trends
+          runs={runs}
+          onSelectRun={(id, modelName) => {
+            setSelectedId(id);
+            setSelectedModel(modelName);
+            location.hash = "analysis";
+          }}
+        />
       ) : (
-        <section className="panel empty">
-          <div className="empty-icon">
-            <BarChart3 size={34} />
-          </div>
-          <div className="eyebrow">READY FOR YOUR FIRST RUN</div>
-          <h2>Your performance history starts here.</h2>
-          <p>
-            Import a cycle trace report to start tracking model performance.
-            <br />
-            Until then, explore the demo to see trends, operator breakdowns, and
-            comparisons.
-          </p>
-          <button className="primary-button" onClick={() => changeMode(true)}>
-            Explore the demo <ChevronRight size={15} />
-          </button>
-        </section>
+        <RunAnalysis
+          key={selectedId}
+          runs={runs}
+          selectedId={selectedId}
+          selectedModel={selectedModel}
+          onSelectModel={setSelectedModel}
+          onSelectRun={(id) => {
+            setSelectedId(id);
+            setSelectedModel("");
+          }}
+        />
       )}
     </AppShell>
   );

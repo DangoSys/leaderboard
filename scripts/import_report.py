@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Import a completed run descriptor and Buckyball Perfetto cycle traces."""
 import argparse
+from bisect import bisect_right
 import fcntl
 import json
 import math
@@ -12,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUSES = {"pass", "fail", "timeout", "infra_error"}
-CATEGORIES = {"Conv", "MatMul", "Transfer", "Activation", "Pool", "Other"}
+CATEGORIES = {"Conv", "MatMul", "Transfer", "Quantization", "Activation", "Pool", "Other"}
 
 
 def report_directory(run):
@@ -41,8 +42,7 @@ def number(value, label, *, positive=False, integer=False):
 
 def parse_trace(data, categories):
     events = data["traceEvents"]
-    operators = []
-    ids = set()
+    groups = {}
     for event in events:
         if event.get("ph") != "X" or event.get("cat") != "buddy.trace":
             continue
@@ -53,9 +53,6 @@ def parse_trace(data, categories):
         for part in path:
             number(part, "trace id", integer=True)
         identity = "-".join(str(int(part)) for part in path)
-        if identity in ids:
-            raise ValueError(f"duplicate trace id: {identity}")
-        ids.add(identity)
         start = number(args["start_cycle"], "start_cycle", integer=True)
         end = number(args["end_cycle"], "end_cycle", integer=True)
         elapsed = number(args["elapsed_cycle"], "elapsed_cycle", integer=True)
@@ -65,32 +62,52 @@ def parse_trace(data, categories):
         category = categories.get(name, "Other")
         if category not in CATEGORIES:
             raise ValueError(f"unknown operator category: {category}")
-        operators.append({"id": identity, "name": name, "category": category,
-                          "cycles": int(elapsed), "start_cycle": int(start),
-                          "level": len(path) - 1})
-    if not operators:
+        groups.setdefault(identity, []).append({
+            "id": identity, "name": name, "category": category,
+            "cycles": int(elapsed), "start_cycle": int(start),
+            "level": len(path) - 1,
+        })
+    if not groups:
         raise ValueError("no buddy.trace cycle intervals found")
-    for op in operators:
-        parts = op["id"].split("-")
+    starts = {}
+    for identity, records in groups.items():
+        records.sort(key=lambda op: op["start_cycle"])
+        starts[identity] = [op["start_cycle"] for op in records]
+        for previous, current in zip(records, records[1:]):
+            if previous["name"] != current["name"]:
+                raise ValueError(f"trace id has inconsistent names: {identity}")
+            if previous["start_cycle"] + previous["cycles"] > current["start_cycle"]:
+                raise ValueError(f"overlapping calls of trace {identity}")
+    for identity, records in groups.items():
+        parts = identity.split("-")
         if len(parts) > 1:
-            parent = next((candidate for candidate in operators
-                           if candidate["id"] == "-".join(parts[:-1])), None)
-            if parent is None:
-                raise ValueError(f"missing parent for trace {op['id']}")
-            if op["start_cycle"] < parent["start_cycle"] or op["start_cycle"] + op["cycles"] > parent["start_cycle"] + parent["cycles"]:
-                raise ValueError(f"nested trace outside parent: {op['id']}")
-    start = min(op["start_cycle"] for op in operators)
-    end = max(op["start_cycle"] + op["cycles"] for op in operators)
-    if start == end or not any(op["cycles"] for op in operators):
+            parent_id = "-".join(parts[:-1])
+            if parent_id not in groups:
+                raise ValueError(f"missing parent for trace {identity}")
+            for op in records:
+                index = bisect_right(starts[parent_id], op["start_cycle"]) - 1
+                if index < 0:
+                    raise ValueError(f"nested trace outside parent: {identity}")
+                parent = groups[parent_id][index]
+                if op["start_cycle"] + op["cycles"] > parent["start_cycle"] + parent["cycles"]:
+                    raise ValueError(f"nested trace outside parent: {identity}")
+    start = min(records[0]["start_cycle"] for records in groups.values())
+    end = max(records[-1]["start_cycle"] + records[-1]["cycles"] for records in groups.values())
+    if start == end:
         raise ValueError("trace span must be positive")
-    for op in operators:
+    operators = []
+    for records in groups.values():
+        op = dict(records[0])
+        op["cycles"] = sum(record["cycles"] for record in records)
+        op["calls"] = len(records)
         op["start_cycle"] -= start
+        operators.append(op)
     return int(end - start), operators
 
 
 def validate_run(run):
-    if run["schema_version"] != 1 or not isinstance(run["demo"], bool):
-        raise ValueError("invalid schema_version or demo flag")
+    if run["schema_version"] != 1:
+        raise ValueError("invalid schema_version")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", run["id"]):
         raise ValueError("run id must be a safe file name")
     stamp = datetime.fromisoformat(run["timestamp"].replace("Z", "+00:00"))
@@ -141,6 +158,7 @@ def validate_run(run):
                 raise ValueError("unknown operator category")
             for key in ("cycles", "start_cycle", "level"):
                 number(op[key], key, integer=True)
+            number(op["calls"], "calls", positive=True, integer=True)
             if op["start_cycle"] + op["cycles"] > model["cycles"]:
                 raise ValueError("operator interval exceeds model trace span")
     return run
@@ -155,11 +173,11 @@ def import_report(descriptor, data_root):
 
 def _import_report(descriptor, data_root):
     source = json.loads(descriptor.read_text())
-    if source.get("demo", False):
-        raise ValueError("the importer only accepts real recorded runs")
     run = {key: source[key] for key in ("id", "timestamp", "repository", "branch", "commit",
                                        "chip", "backend", "config_hash", "clock_hz")}
-    run.update(schema_version=1, demo=False, models=[])
+    run.update(schema_version=1, models=[])
+    if "provenance" in source:
+        run["provenance"] = source["provenance"]
     directory = report_directory(run)
     trace_files = []
     for index, spec in enumerate(source["models"]):

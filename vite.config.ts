@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: process.env.PAGES_BASE_PATH ?? "/leaderboard/",
+  base: "/leaderboard/",
   build: {
     rollupOptions: {
       output: {
